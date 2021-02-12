@@ -1,0 +1,38 @@
+.sign-in-form {
+  h2 {
+    font-weight: bold;
+    padding-bottom: 30px;
+  }
+
+  .form-group {
+    padding-bottom: 20px;
+  }
+
+  input {
+    font-size: 20px;
+    background-color: $background-dark-light!important;
+    border-radius: 0!important;
+    border: 0!important;
+    border-bottom: 1px solid $border-grey!important;
+    color: $font-light!important;
+    margin-bottom: 30px;
+    &:focus {
+      background-color: $background-dark-light!important;
+      box-shadow: none!important;
+      border-bottom: 1px solid $border-primary!important;
+    }
+  }
+
+  button {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 50px;
+    .spinner-border {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}

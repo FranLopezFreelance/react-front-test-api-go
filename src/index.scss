@@ -5,40 +5,38 @@ body {
   color: $font-light;
 }
 
-:global {
-  .btn {
-    box-shadow: none!important;
+.btn {
+  box-shadow: none!important;
+}
+
+.btn .btn-primary {
+  background-color: $primary!important;
+  border-color: $primary!important;
+  &:hover {
+    background-color: rgba(26, 145, 218, 1)!important;
   }
-  
-  .btn .btn-primary {
-    background-color: $primary!important;
-    border-color: $primary!important;
-    &:hover {
-      background-color: rgba(26, 145, 218, 1)!important;
-    }
+}
+
+.btn .btn-outline-primary {
+  border-color: $border-primary!important;
+  color: $primary!important;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: rgba(29, 161, 242, 0.1)!important;
   }
-  
-  .btn .btn-outline-primary {
-    border-color: $border-primary!important;
-    color: $primary!important;
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: rgba(29, 161, 242, 0.1)!important;
-    }
-  }
-  
-  input .form-control,
-  textarea .form-control {
+}
+
+input .form-control,
+textarea .form-control {
+  background-color: $background-dark-light!important;
+  border-radius: 0!important;
+  border: 0!important;
+  border-bottom: 1px solid $border-grey!important;
+  color: $font-light!important;
+  &:focus {
     background-color: $background-dark-light!important;
-    border-radius: 0!important;
-    border: 0!important;
-    border-bottom: 1px solid $border-grey!important;
-    color: $font-light!important;
-    &:focus {
-      background-color: $background-dark-light!important;
-      box-shadow: none!important;
-      border-bottom: 1px solid $border-primary!important;
-    }
+    box-shadow: none!important;
+    border-bottom: 1px solid $border-primary!important;
   }
 }

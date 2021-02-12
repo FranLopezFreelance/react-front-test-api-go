@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Col, Button, Form, Spinner } from 'react-bootstrap';
 import { values, size } from 'lodash';
 import { toast } from 'react-toastify';
-import { isEmailValid } from '../../utils/isEmailValid';
+import { isEmailValid } from '../../utils/functions';
 import { signUp } from '../../api/auth';
 
 export default function SignUpForm(props) {
@@ -21,7 +21,6 @@ export default function SignUpForm(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // TODO mandar info al back
     let validCount = 0;
     values(formData).some(value => {
       value && validCount++;
@@ -48,7 +47,6 @@ export default function SignUpForm(props) {
             setShowModal(false);
           }
         }).catch((err) => {
-          console.log(err);
           toast.error("Error del servidor");
         }).finally(() => {
           setSignUpLoading(false);
@@ -110,7 +108,7 @@ export default function SignUpForm(props) {
           </Row>
         </Form.Group>
         <Button variant="primary" type="submit">
-          {!signUpLoading ? 'Registrarme' : <Spinner animation="border" />}
+          { !signUpLoading ? 'Registrarme' : <Spinner animation="border" /> }
         </Button>
       </Form>
     </div>

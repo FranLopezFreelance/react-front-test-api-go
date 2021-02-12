@@ -12,7 +12,9 @@ import SignInForm from '../../components/SignInForm/SignInForm';
 import LogoBlue from '../../assets/img/logo-blue.png';
 import LogoWhite from '../../assets/img/logo-white.png';
 
-export default function Auth() {
+export default function Auth(props) {
+
+  const { setLoginState } = props;
 
   const [ showModal, setShowModal ] = useState(false);
   const [ contentModal, setContentModal ] = useState(null);
@@ -30,6 +32,7 @@ export default function Auth() {
           <RightComponent 
             openModal={openModal}
             setShowModal={setShowModal}
+            setLoginState={setLoginState}
           />
         </Row>
       </Container>
@@ -67,7 +70,7 @@ function LeftComponent() {
 
 function RightComponent(props) {
 
-  const { openModal, setShowModal } = props;
+  const { openModal, setShowModal, setLoginState } = props;
 
   return (
     <Col className="auth__right" xs={6}>
@@ -86,7 +89,10 @@ function RightComponent(props) {
         <Button 
           variant="outline-primary"
           onClick={() => openModal(
-            <SignInForm setShowModal={setShowModal} />
+            <SignInForm 
+              setShowModal={setShowModal} 
+              setLoginState={setLoginState}
+            />
           )}
         >
           Iniciar sesión
