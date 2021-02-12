@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Row, Col, Button, Form, Spinner } from 'react-bootstrap';
 import { values, size } from 'lodash';
 import { toast } from 'react-toastify';
@@ -6,8 +6,7 @@ import { isEmailValid } from '../../utils/functions';
 import { signUp } from '../../api/auth';
 
 export default function SignUpForm(props) {
-
-  const {setShowModal} = props;
+  const { setShowModal } = props;
 
   const [formData, setFormData] = useState(initialFormValue());
 
@@ -15,45 +14,49 @@ export default function SignUpForm(props) {
 
   const onChange = (e) => {
     setFormData({
-      ...formData, [e.target.name]: e.target.value
-    })
-  }
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
     let validCount = 0;
-    values(formData).some(value => {
+    values(formData).some((value) => {
       value && validCount++;
       return null;
     });
 
     if (validCount !== size(formData)) {
-      toast.warning("Faltan completar campos del formulario.");
+      toast.warning('Faltan completar campos del formulario.');
     } else {
       if (!isEmailValid(formData.email)) {
-        toast.warning("Email inválido.");
+        toast.warning('Email inválido.');
       } else if (formData.password !== formData.repeatPassword) {
-        toast.warning("Las contraseñas no coinciden.");
+        toast.warning('Las contraseñas no coinciden.');
       } else if (size(formData.password) < 6) {
-        toast.warning("Las contraseñas debe ser de al menos 6 caractéres.");
-      } else {  
+        toast.warning('Las contraseñas debe ser de al menos 6 caractéres.');
+      } else {
         setSignUpLoading(true);
-        signUp(formData).then(res => {
-          if (res.code) {
-            toast.warning(res.message);
-          } else {
-            toast.success("El registro ha sido correcto.");
-            setFormData(initialFormValue())
-            setShowModal(false);
-          }
-        }).catch((err) => {
-          toast.error("Error del servidor");
-        }).finally(() => {
-          setSignUpLoading(false);
-        });
+        signUp(formData)
+          .then((res) => {
+            if (res.code) {
+              toast.warning(res.message);
+            } else {
+              toast.success('El registro ha sido correcto.');
+              setFormData(initialFormValue());
+              setShowModal(false);
+            }
+          })
+          .catch((err) => {
+            toast.error('Error del servidor');
+          })
+          .finally(() => {
+            setSignUpLoading(false);
+          });
       }
     }
-  }
+  };
 
   return (
     <div className="sign-up-form">
@@ -62,7 +65,7 @@ export default function SignUpForm(props) {
         <Form.Group>
           <Row>
             <Col>
-              <Form.Control 
+              <Form.Control
                 type="text"
                 placeholder="Nombre"
                 name="name"
@@ -70,7 +73,7 @@ export default function SignUpForm(props) {
               />
             </Col>
             <Col>
-              <Form.Control 
+              <Form.Control
                 type="text"
                 placeholder="Apellido"
                 name="lastName"
@@ -80,7 +83,7 @@ export default function SignUpForm(props) {
           </Row>
         </Form.Group>
         <Form.Group>
-          <Form.Control 
+          <Form.Control
             type="email"
             placeholder="Email"
             name="email"
@@ -90,7 +93,7 @@ export default function SignUpForm(props) {
         <Form.Group>
           <Row>
             <Col>
-              <Form.Control 
+              <Form.Control
                 type="password"
                 placeholder="Contraseña"
                 name="password"
@@ -98,7 +101,7 @@ export default function SignUpForm(props) {
               />
             </Col>
             <Col>
-              <Form.Control 
+              <Form.Control
                 type="password"
                 placeholder="Repetir Cotraseña"
                 name="repeatPassword"
@@ -108,11 +111,11 @@ export default function SignUpForm(props) {
           </Row>
         </Form.Group>
         <Button variant="primary" type="submit">
-          { !signUpLoading ? 'Registrarme' : <Spinner animation="border" /> }
+          {!signUpLoading ? 'Registrarme' : <Spinner animation="border" />}
         </Button>
       </Form>
     </div>
-  )
+  );
 }
 
 function initialFormValue() {
@@ -121,6 +124,6 @@ function initialFormValue() {
     lastName: '',
     email: '',
     password: '',
-    repeatPassword: ''
-  }
+    repeatPassword: '',
+  };
 }

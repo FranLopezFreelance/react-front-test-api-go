@@ -11,13 +11,13 @@ export function getToken() {
   return localStorage.getItem(TOKEN);
 }
 
-export function isExpired(token){
+export function isExpired(token) {
   const { exp } = jwtDecode(token);
   const expire = exp * 1000;
-  return (expire - Date.now() < 0) ? true : false;
+  return expire - Date.now() < 0 ? true : false;
 }
 
-export function isUserLoggedIn(){
+export function isUserLoggedIn() {
   const token = getToken();
   if (token && !isExpired(token)) {
     return jwtDecode(token);
@@ -25,6 +25,6 @@ export function isUserLoggedIn(){
   return null;
 }
 
-export function logOut(){
+export function logOut() {
   localStorage.removeItem(TOKEN);
 }

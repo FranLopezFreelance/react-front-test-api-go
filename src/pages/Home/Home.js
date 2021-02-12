@@ -5,5 +5,5 @@ export default function Home() {
     <div className="home">
       <h2>Bienvenido</h2>
     </div>
-  )
+  );
 }

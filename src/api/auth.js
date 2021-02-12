@@ -1,11 +1,10 @@
 import { BASE_URL, TOKEN } from '../utils/constants';
 
 export function signUp(user) {
-
   const data = {
     ...user,
     email: user.email.toLowerCase(),
-    birthDate: new Date()
+    birthDate: new Date(),
   };
 
   delete data.repeatPassword;
@@ -13,24 +12,27 @@ export function signUp(user) {
   const url = `${BASE_URL}/auth/register`;
 
   const params = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data)
-  }
+    body: JSON.stringify(data),
+  };
 
-  return fetch(url, params).then(res => {
-    if (res.status >= 200 && res.status < 300) {
-      return res.json();
-    } else {
-      return { code: res.status, message: res }
-    }
-  }).then(result => {
-    return result;
-  }).catch(err => {
-    return err;
-  });
+  return fetch(url, params)
+    .then((res) => {
+      if (res.status >= 200 && res.status < 300) {
+        return res.json();
+      } else {
+        return { code: res.status, message: res };
+      }
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err;
+    });
 }
 
 export function signIn(user) {
@@ -38,30 +40,33 @@ export function signIn(user) {
 
   const data = {
     ...user,
-    email: user.email.toLowerCase()
-  }
+    email: user.email.toLowerCase(),
+  };
 
   const params = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data)
-  }
+    body: JSON.stringify(data),
+  };
 
-  return fetch(url, params).then(res => {
-    if (res.status >= 200 && res.status < 300) {
-      return res.json();
-    } else {
-      console.log('response', res.json());
-      return { code: res.status, message: res };
-    }
-  }).then(result => {
-    return result;
-  }).catch(err => {
-    console.log('error', err)
-    return err;
-  });
+  return fetch(url, params)
+    .then((res) => {
+      if (res.status >= 200 && res.status < 300) {
+        return res.json();
+      } else {
+        console.log('response', res.json());
+        return { code: res.status, message: res };
+      }
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      console.log('error', err);
+      return err;
+    });
 }
 
 export function setToken(token) {

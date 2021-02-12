@@ -6,10 +6,10 @@ export default [
   {
     path: '/',
     exact: true,
-    page: Home
+    page: Home,
   },
   {
     path: '*',
-    page: Error404
-  }
+    page: Error404,
+  },
 ];
