@@ -1,10 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-import { AuthContext } from '../../utils/contexts';
-import MainLayout from '../../layouts/MainLayout';
+import { toast } from 'react-toastify';
 import { withRouter } from 'react-router-dom';
 import { viewProfile } from '../../api/profile';
-import { toast } from 'react-toastify';
+import { AuthContext } from '../../utils/contexts';
+import MainLayout from '../../layouts/MainLayout';
 import BannerAvatar from '../../components/BannerAvatar';
 import PageSpinner from '../../components/PageSpinner';
 import ProfileTweets from '../../components/ProfileTweets/ProfileTweets';
