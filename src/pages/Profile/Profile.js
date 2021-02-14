@@ -9,7 +9,6 @@ import BannerAvatar from '../../components/BannerAvatar';
 import PageSpinner from '../../components/PageSpinner';
 import ProfileTweets from '../../components/ProfileTweets/ProfileTweets';
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
-import ProfileTitle from '../../components/ProfileTitle';
 
 function Profile(props) {
   const { params } = props.match;
@@ -46,7 +45,6 @@ function ViewProfile(props) {
 
   return (
     <>
-      <ProfileTitle profile={profile} />
       <BannerAvatar profile={profile} user={user} />
       <ProfileInfo profile={profile} />
       <ProfileTweets profile={profile} />
