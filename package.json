@@ -12,6 +12,7 @@
     "bootstrap": "^4.6.0",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
@@ -44,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }

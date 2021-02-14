@@ -1,7 +1,16 @@
 @import './colors';
 @import './pages/auth/auth';
 @import './components/modals/basic-modal';
+@import './components/modals/info-modal';
 @import './components/sign-in-form/sign-in-form';
 @import './components/sign-up-form/sign-up-form';
+@import './components/side-bar/side-bar';
+@import './components/page-spinner/page-spinner';
+@import './components/profile-title/profile-title';
+@import './components/banner-avatar/banner-avatar';
+@import './components/profile-info/profile-info';
+@import './components/tweets/tweets';
+@import './layouts/main-layout';
 @import './pages/home/home';
+@import './pages/users/users';
 @import './pages/error-404/error-404';

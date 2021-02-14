@@ -1,0 +1,15 @@
+.main-layout {
+  &__menu {
+    padding-left: 0px;
+  }
+
+  &__content {
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 0!important;
+    border-right: 1px solid $border-grey;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

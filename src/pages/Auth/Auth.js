@@ -6,15 +6,13 @@ import {
   faUsers,
   faComment,
 } from '@fortawesome/free-solid-svg-icons';
-import BasicModal from '../../components/Modals';
+import BasicModal from '../../components/Modals/BasicModal';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import SignInForm from '../../components/SignInForm/SignInForm';
-import LogoBlue from '../../assets/img/logo-blue.png';
-import LogoWhite from '../../assets/img/logo-white.png';
+import LogoBlue from '../../assets/img/logos/logo-blue.png';
+import LogoWhite from '../../assets/img/logos/logo-white.png';
 
-export default function Auth(props) {
-  const { setLoginState } = props;
-
+export default function Auth() {
   const [showModal, setShowModal] = useState(false);
   const [contentModal, setContentModal] = useState(null);
 
@@ -28,11 +26,7 @@ export default function Auth(props) {
       <Container className="auth" fluid>
         <Row>
           <LeftComponent />
-          <RightComponent
-            openModal={openModal}
-            setShowModal={setShowModal}
-            setLoginState={setLoginState}
-          />
+          <RightComponent openModal={openModal} setShowModal={setShowModal} />
         </Row>
       </Container>
       <BasicModal show={showModal} setShow={setShowModal}>
@@ -65,7 +59,7 @@ function LeftComponent() {
 }
 
 function RightComponent(props) {
-  const { openModal, setShowModal, setLoginState } = props;
+  const { openModal, setShowModal } = props;
 
   return (
     <Col className="auth__right" xs={6}>
@@ -81,14 +75,7 @@ function RightComponent(props) {
         </Button>
         <Button
           variant="outline-primary"
-          onClick={() =>
-            openModal(
-              <SignInForm
-                setShowModal={setShowModal}
-                setLoginState={setLoginState}
-              />
-            )
-          }
+          onClick={() => openModal(<SignInForm setShowModal={setShowModal} />)}
         >
           Iniciar sesión
         </Button>

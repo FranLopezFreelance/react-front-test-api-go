@@ -7,20 +7,14 @@ import Routing from './routes/Routing';
 
 export default function App() {
   const [user, setUser] = useState(null);
-  const [loadUser, setLoadUser] = useState(false);
-  const [loginState, setLoginState] = useState(false);
 
   useEffect(() => {
     setUser(isUserLoggedIn());
-    setLoginState(false);
-    setLoadUser(true);
-  }, [loginState]);
-
-  if (!loadUser) return null;
+  }, []);
 
   return (
-    <AuthContext.Provider value={user}>
-      {!user ? <Auth setLoginState={setLoginState} /> : <Routing />}
+    <AuthContext.Provider value={{ user, setUser }}>
+      {!user ? <Auth /> : <Routing />}
       <ToastContainer
         position="top-right"
         autoClose={5000}

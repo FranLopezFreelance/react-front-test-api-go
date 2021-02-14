@@ -1,0 +1,44 @@
+.profile-info {
+  margin: 20px;
+  * {
+    margin: 0px;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__email {
+    font-size: 18px;
+    color: $font-grey;
+  }
+
+  &__biography {
+    margin: 10px 0;
+    white-space: pre-line;
+  }
+
+  &__more-info {
+    display: flex;
+    align-items: center;
+    p, a {
+      padding-right: 20px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    p {
+      color: $font-grey;
+    }
+    a {
+      color: $primary;
+      margin-left: 15px;
+    }
+  }
+}

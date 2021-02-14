@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import LogoWhite from '../../assets/img/logo-white.png';
+import LogoWhite from '../../../assets/img/logos/logo-white.png';
 
 export default function BasicModal(props) {
   const { show, setShow, children } = props;

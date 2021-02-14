@@ -24,7 +24,10 @@ export function signUp(user) {
       if (res.status >= 200 && res.status < 300) {
         return res.json();
       } else {
-        return { code: res.status, message: res };
+        return {
+          code: 500,
+          message: 'Ha ocurrido un error.',
+        };
       }
     })
     .then((result) => {
@@ -56,8 +59,10 @@ export function signIn(user) {
       if (res.status >= 200 && res.status < 300) {
         return res.json();
       } else {
-        console.log('response', res.json());
-        return { code: res.status, message: res };
+        return {
+          code: res.status,
+          message: 'Usuario y/o contraseña incorrectos.',
+        };
       }
     })
     .then((result) => {

@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Form, Button, Spinner } from 'react-bootstrap';
 import { values, size } from 'lodash';
 import { toast } from 'react-toastify';
-import { isEmailValid } from '../../utils/functions';
+import { isEmailValid, isUserLoggedIn } from '../../utils/functions';
 import { signIn, setToken } from '../../api/auth';
+import { AuthContext } from '../../utils/contexts';
 
 export default function SignInForm(props) {
-  const { setShowModal, setLoginState } = props;
-
+  const { setShowModal } = props;
+  const { setUser } = useContext(AuthContext);
   const [formData, setFormData] = useState(initialFormValue());
   const [signInLoading, setSignInLoading] = useState(false);
+  const [subscription, setSubscription] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      setSubscription(null);
+    };
+  }, [subscription]);
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,21 +38,26 @@ export default function SignInForm(props) {
         toast.warning('Email inválido.');
       } else {
         setSignInLoading(true);
-        signIn(formData)
+        const subscription = signIn(formData)
           .then((res) => {
             if (res.code) {
               toast.warning(res.message);
+            } else if (!res.token) {
+              toast.warning(
+                'No se pudo establecer comunicación con el servidor.'
+              );
             } else {
-              toast.success('Bienvenido!');
               setToken(res.token);
-              setLoginState(true);
+              setUser(isUserLoggedIn());
               setFormData(initialFormValue());
               setShowModal(false);
+              toast.success('Bienvenido!');
             }
           })
           .finally(() => {
             setSignInLoading(false);
           });
+        setSubscription(subscription);
       }
     }
     // setShowModal(false);
