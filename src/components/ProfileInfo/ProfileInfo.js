@@ -20,7 +20,7 @@ export default function ProfileInfo(props) {
           <p>
             <BirthDate />
             {moment(profile.birthDate)
-              .add('hours', 3)
+              .add(3, 'hours')
               .locale('es', localization)
               .format('LL')}
           </p>

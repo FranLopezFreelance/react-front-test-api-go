@@ -1,0 +1,33 @@
+.info-modal {
+  .modal-content {
+    position: relative;
+    background-color: $background-grey-dark;
+    border-radius: 25px;
+    overflow: hidden;
+    .modal-header {
+      border-bottom: 1px solid $border-grey;
+      padding: 15px;
+      .modal-title {
+        display: flex;
+        align-items: center;
+        svg {
+          position: absolute;
+          top: 20px;
+          right: 0px;
+          width: 14px;
+          height: 14px;
+          fill: $primary;
+          margin-left: 10px;
+          margin-right: 20px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        h2 {
+          font-size: 18px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
