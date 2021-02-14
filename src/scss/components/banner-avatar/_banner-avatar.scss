@@ -35,4 +35,37 @@
       opacity: 0.8;
     }
   }
+
+  .banner-edit {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 5px;
+    
+    &:hover, &focus, &:active {
+      background-color: transparent!important;
+      opacity: 0.8;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    svg {
+      width: 15px;
+      height: 15px;
+      margin: auto;
+      fill: white;
+    }
+    display: none;
+  }
+  &:hover {
+    .banner-edit {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
