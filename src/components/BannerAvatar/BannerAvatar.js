@@ -11,8 +11,6 @@ export default function BannerAvatar(props) {
   const { profile, user } = props;
   const [showModal, setShowModal] = useState(false);
 
-  console.log(profile);
-
   function showBanner() {
     if (profile?.banner) {
       return `${BASE_URL}/getBanner?id=${profile.id}`;

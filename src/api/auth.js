@@ -69,7 +69,6 @@ export function signIn(user) {
       return result;
     })
     .catch((err) => {
-      console.log('error', err);
       return err;
     });
 }

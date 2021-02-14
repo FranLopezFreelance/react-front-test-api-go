@@ -3,7 +3,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
-import { useDropzone } from 'react-dropzone';
+// import { useDropzone } from 'react-dropzone';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -12,8 +12,6 @@ export default function ProfileForm(props) {
   const [formData, setFormData] = useState(initialValue(profile));
   registerLocale('es', es);
   setDefaultLocale('es');
-
-  console.log(profile);
 
   const onChange = (e) => {
     setFormData({
@@ -25,7 +23,6 @@ export default function ProfileForm(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     setShowModal(false);
-    console.log(formData);
   };
 
   return (
