@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { Camera } from '../../utils/icons';
 import bannerDefault from '../../assets/img/default/banner-default.png';
 import avatarDefault from '../../assets/img/default/avatar-default.png';
 import InfoModal from '../../components/Modals/InfoModal';
@@ -45,11 +44,12 @@ export default function BannerAvatar(props) {
           {user._id !== profile.id && <Button>Seguir</Button>}
         </div>
       )}
-      <Button className="banner-edit" variant="outline-light">
-        <Camera />
-      </Button>
       <InfoModal show={showModal} setShow={setShowModal} title="Editar Perfil">
-        <ProfileForm profile={profile} setShowModal={setShowModal} />
+        <ProfileForm
+          user={user}
+          profile={profile}
+          setShowModal={setShowModal}
+        />
       </InfoModal>
     </div>
   );
