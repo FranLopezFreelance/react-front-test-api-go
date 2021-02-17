@@ -1,6 +1,6 @@
 import { BASE_URL, TOKEN } from '../utils/constants';
 
-export function signUp(user) {
+export async function signUp(user) {
   const data = {
     ...user,
     email: user.email.toLowerCase(),
@@ -19,23 +19,19 @@ export function signUp(user) {
     body: JSON.stringify(data),
   };
 
-  return fetch(url, params)
-    .then((res) => {
-      if (res.status >= 200 && res.status < 300) {
-        return res.json();
-      } else {
-        return {
-          code: 500,
-          message: 'Ha ocurrido un error.',
-        };
-      }
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err;
-    });
+  try {
+    const res = await fetch(url, params);
+    if (res.status >= 200 && res.status < 300) {
+      return res.json();
+    } else {
+      return {
+        code: 500,
+        message: 'Ha ocurrido un error.',
+      };
+    }
+  } catch (err) {
+    return err;
+  }
 }
 
 export function signIn(user) {
